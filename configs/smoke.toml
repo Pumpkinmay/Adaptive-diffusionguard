@@ -1,0 +1,31 @@
+[simulation]
+seed = 20260927
+nodes = 80
+communities = 4
+p_intra = 0.12
+p_inter = 0.015
+timesteps = 3
+active_users_per_step = 12
+recommendation_count = 4
+following_count = 3
+recommendation_buffer = 10
+controller_window = 3
+seed_posts_per_kind = 4
+risk_score = 0.9
+risk_repost_probability = 0.16
+benign_repost_probability = 0.08
+report_probability = 0.10
+
+[policy]
+omega_intra = 0.65
+omega_inter = 0.30
+global_keep_probability = 0.50
+
+[controller]
+interval = 1
+step_size = 0.10
+risk_target = 0.25
+cross_community_target = 0.30
+report_target = 0.10
+benign_loss_limit = 0.05
+intervention_budget = 1.20

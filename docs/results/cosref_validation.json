@@ -1,0 +1,120 @@
+{
+  "schema_version": "1.0",
+  "scope": "sanitized_aggregate_only",
+  "paper": {
+    "doi": "10.1038/s41467-026-73665-1",
+    "official_code_commit": "9629dd7a7adecaadfffd53f2ae0f3a28a75a54eb",
+    "zenodo_doi": "10.5281/zenodo.19841214"
+  },
+  "official_code_directional_validation": {
+    "status": "passed_for_selected_small_parameter_slice",
+    "network_size": 2000,
+    "replicates": 8,
+    "fixed_seed": 20260929,
+    "conditions": [
+      {
+        "mu": 0.2,
+        "observed_control_direction": "stronger_intra_community_control",
+        "reference_optimum": {
+          "paper_omega_intra": 0.0,
+          "paper_omega_inter": 0.8
+        }
+      },
+      {
+        "mu": 0.8,
+        "observed_control_direction": "stronger_inter_community_control",
+        "reference_optimum": {
+          "paper_omega_intra": 0.8,
+          "paper_omega_inter": 0.0
+        }
+      }
+    ],
+    "sources": [
+      {
+        "path": "runs/cosref-reference-validation/reference-oracle/summary.json",
+        "sha256": "eb082f660ad620c5ccc77ea3219a06b642019fb0521c49abc944138743ed7f54"
+      },
+      {
+        "path": "runs/cosref-reference-validation/validation_report.md",
+        "sha256": "1c1a92cafbbb6647580def5f766e2b5a4333ae176babd1305a3def0e352c07db"
+      }
+    ],
+    "limitation": "This validates direction on one controlled parameter slice; it is not a reproduction of all paper figures or datasets."
+  },
+  "project_theory_allocation": {
+    "provenance": "project_adaptation",
+    "directions": [
+      {
+        "condition": "strong_community",
+        "mu_region": "mu < 0.45",
+        "direction": "stronger_intra_community_exposure_control",
+        "oasis_keep_intra": 0.2,
+        "oasis_keep_inter": 1.0
+      },
+      {
+        "condition": "moderate_mixing",
+        "mu_region": "0.45 <= mu <= 0.55",
+        "direction": "balanced_exposure_control",
+        "oasis_keep_intra": 0.6,
+        "oasis_keep_inter": 0.6
+      },
+      {
+        "condition": "weak_community",
+        "mu_region": "mu > 0.55",
+        "direction": "stronger_inter_community_exposure_control",
+        "oasis_keep_intra": 1.0,
+        "oasis_keep_inter": 0.2
+      }
+    ],
+    "semantic_warning": "paper omega is not mathematically or empirically equivalent to the OASIS exposure keep probability",
+    "sources": [
+      {
+        "path": "configs/cosref_threshold_response_v1.json",
+        "sha256": "8f22a6522c8694821839ef41fe071a0d9eba60e72d07831331bd8b2ac7e576ec"
+      }
+    ]
+  },
+  "robustness_pilot": {
+    "status": "calibration_selection_not_stable",
+    "network_nodes": 60,
+    "timesteps": 8,
+    "calibration_runs": 75,
+    "evaluation_runs": 150,
+    "finding": "The pilot did not demonstrate a stable advantage over static COSREF on propagation outcomes. Directional and exact-parameter selections were not uniformly stable across strong, moderate and weak mixing conditions.",
+    "sources": [
+      {
+        "path": "runs/cosref-robustness-pilot-v1/summary.json",
+        "sha256": "f917f795e0e1dbcc952332a9804743a357dea8daac02174b609cf5d70d1cd232"
+      },
+      {
+        "path": "docs/cosref_robustness_pilot_v1_report.md",
+        "sha256": "dbdfe33266a5ac5603fb2695e4714803795ee7e69d66e650539d61f68604873c"
+      }
+    ]
+  },
+  "threshold_response": {
+    "status": "paper_native_mechanism_passed_exposure_bridge_limited",
+    "network_nodes": 60,
+    "timesteps": 8,
+    "formal_runs": 285,
+    "paper_native_direction_check": true,
+    "multi_generation_propagation_observed": true,
+    "finding": "The deterministic synchronous threshold layer transmitted some exposure differences to adoption and cascades, but the synthetic networks were near saturation and realized-cost matching was not uniformly within tolerance. It does not establish general superiority over static COSREF.",
+    "sources": [
+      {
+        "path": "runs/cosref-threshold-response-v1/summary.json",
+        "sha256": "a268e487e078e48d5e9faf99501742783554a98da53fbe586b84d3203f497d53"
+      },
+      {
+        "path": "runs/cosref-threshold-response-v1/实验报告.md",
+        "sha256": "983f2335ede548baa9c96db327a582439961a2d37c90d3e68f0f29ccdfa4a660"
+      }
+    ]
+  },
+  "interpretation_limits": [
+    "OASIS keep probabilities are a project calibration layer, not a paper formula",
+    "Risk labels are oracle synthetic ground truth and do not measure classifier performance",
+    "Synthetic scripted or LLM agents have no established external validity for human behavior",
+    "These experiments do not establish causal or real-world governance effectiveness"
+  ]
+}

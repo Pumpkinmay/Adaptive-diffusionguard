@@ -1,0 +1,17 @@
+# Example cloud-GPU configuration. Review model license and hardware cost first.
+[model]
+name = "replace-with-small-instruction-model"
+qlora = true
+
+[lora]
+r = 16
+alpha = 32
+dropout = 0.05
+target_modules = ["q_proj", "k_proj", "v_proj", "o_proj"]
+
+[training]
+epochs = 2
+batch_size = 2
+gradient_accumulation = 8
+learning_rate = 0.0002
+max_length = 512

@@ -1,0 +1,15 @@
+[model]
+name = "configurable-model-placeholder"
+qlora = false
+
+[lora]
+r = 8
+alpha = 16
+dropout = 0.05
+
+[training]
+epochs = 1
+batch_size = 1
+gradient_accumulation = 1
+learning_rate = 0.0002
+max_length = 256

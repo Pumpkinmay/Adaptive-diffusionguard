@@ -1,0 +1,85 @@
+{
+  "schema_version": "1.0",
+  "scope": "sanitized_aggregate_only",
+  "model_service": "Groq",
+  "model": "openai/gpt-oss-20b",
+  "fine_tuned_by_project": false,
+  "training_samples_generated": 0,
+  "pilots": [
+    {
+      "protocol": "dynamic-choice-enum-v1",
+      "status": "degraded",
+      "completed_decisions": 78,
+      "logical_decisions": 90,
+      "physical_remote_attempts": 116,
+      "training_samples_generated": 0,
+      "limitations": [
+        "12 logical decisions ended in final provider failure",
+        "Dynamic choice_id enums were not sufficiently reliable for this provider/model",
+        "Corrected accounting found 0 evidenced dispatcher failures and 12 unrecovered logical errors",
+        "This single synthetic pilot is not evidence of real-human behavior or governance effectiveness"
+      ],
+      "sources": [
+        {
+          "path": "runs/cosref-llm-joint-v1-groq/summary.json",
+          "sha256": "84b4172338263f43b6178d8a5da0fbbaf97caf87f5537d7a07cdbcec4c48c942"
+        },
+        {
+          "path": "runs/cosref-llm-joint-v1-groq/corrected_accounting_audit.json",
+          "sha256": "67787b233effe840f0dfe57f7536bd670d188e4e5355d9d6613a3cbaf055d535"
+        }
+      ]
+    },
+    {
+      "protocol": "fixed-choice-index-v2",
+      "status": "success_with_semantic_quality_issue",
+      "completed_decisions": 20,
+      "logical_decisions": 20,
+      "physical_remote_attempts": 27,
+      "training_samples_generated": 0,
+      "verified_semantic_issue_count": 1,
+      "limitations": [
+        "One executed low-risk report had a rationale referring to a different high-risk post",
+        "An integer choice index alone did not guarantee semantic target binding",
+        "The 20-decision micro-pilot is too small for protocol-level performance claims"
+      ],
+      "sources": [
+        {
+          "path": "runs/cosref-llm-joint-v2-groq-micro/summary.json",
+          "sha256": "a5ce5e2e086d2fcfc7608d33b37a06570d0568df7c572d9f9f31d40a76c9e93e"
+        },
+        {
+          "path": "runs/cosref-llm-joint-v2-groq-micro/v2_1_counterfactual_consistency_audit.json",
+          "sha256": "934b7c0047acd50ca0d83e4b1bf6455331d7a2216a8a18f69c033eec5e8bf35b"
+        }
+      ]
+    },
+    {
+      "protocol": "fixed-choice-semantic-v2.1",
+      "status": "degraded",
+      "completed_decisions": 11,
+      "logical_decisions": 12,
+      "physical_remote_attempts": 19,
+      "training_samples_generated": 0,
+      "final_provider_failure_count": 1,
+      "limitations": [
+        "One decision ended in provider HTTP 400 json_validate_failed",
+        "The protocol did not meet its 12/12 freeze criterion",
+        "Passing local semantic checks on 11 responses does not validate rationale factual quality generally"
+      ],
+      "sources": [
+        {
+          "path": "runs/cosref-llm-joint-v2-1-groq-micro/summary.json",
+          "sha256": "14248da40212e22ce8c2e8eec98e59c186bb929ead6ecba75a058cb76c20d88c"
+        }
+      ]
+    }
+  ],
+  "interpretation_limits": [
+    "Success rates from different protocol versions are not pooled or merged",
+    "Failed decisions are not imputed",
+    "All profiles, posts, risks and scenarios were synthetic",
+    "LLM Agent behavior is not a validated proxy for human behavior",
+    "No pilot produced training data and no LoRA or QLoRA training was completed"
+  ]
+}

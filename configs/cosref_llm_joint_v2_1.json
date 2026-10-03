@@ -1,0 +1,97 @@
+{
+  "experiment_id": "cosref-llm-joint-v2-1",
+  "version": "2.1",
+  "protocol_version": "fixed-choice-semantic-v2.1",
+  "agent_role": "behavior_simulator",
+  "oracle_synthetic_risk_labels": true,
+  "network": {
+    "nodes": 60,
+    "communities": 2,
+    "conditions": [
+      {"condition_id": "strong-community", "network_seed": 61001, "p_intra": 0.18, "p_inter": 0.015, "mu_min_inclusive": 0.0, "mu_max_exclusive": 0.2},
+      {"condition_id": "moderate-mixing", "network_seed": 61002, "p_intra": 0.09, "p_inter": 0.09, "mu_min_inclusive": 0.4, "mu_max_inclusive": 0.6},
+      {"condition_id": "weak-community", "network_seed": 61003, "p_intra": 0.015, "p_inter": 0.18, "mu_min_exclusive": 0.8, "mu_max_inclusive": 1.0}
+    ]
+  },
+  "agents": [
+    {"user_id": 0, "profile_id": "verifier", "description": "Synthetic verifier who checks risky claims before sharing."},
+    {"user_id": 1, "profile_id": "benign-sharer", "description": "Synthetic user who prefers sharing clearly verified benign information."},
+    {"user_id": 2, "profile_id": "contextualizer", "description": "Synthetic user who may quote questionable claims with corrective context."},
+    {"user_id": 30, "profile_id": "cautious", "description": "Synthetic cautious user who often ignores uncertain feeds."},
+    {"user_id": 31, "profile_id": "balanced", "description": "Synthetic balanced user who reports clear risks and shares verified updates."}
+  ],
+  "simulation": {
+    "timesteps": 2,
+    "active_user_order": [[0, 30, 1, 31, 2], [2, 31, 1, 30, 0]],
+    "recommendation_count": 40,
+    "following_count": 40,
+    "recommendation_buffer": 80,
+    "risk_threshold": 0.7,
+    "low_risk_threshold": 0.3,
+    "initial_posts": [
+      {"logical_id": "risk-a", "kind": "root", "author": 10, "content": "Unverified synthetic high-risk health claim from community A.", "risk_score": 0.9},
+      {"logical_id": "benign-a", "kind": "root", "author": 11, "content": "Verified synthetic benign weather update from community A.", "risk_score": 0.0},
+      {"logical_id": "risk-b", "kind": "root", "author": 40, "content": "Unverified synthetic high-risk health claim from community B.", "risk_score": 0.9},
+      {"logical_id": "benign-b", "kind": "root", "author": 41, "content": "Verified synthetic benign weather update from community B.", "risk_score": 0.0},
+      {"logical_id": "risk_b_correction", "kind": "quote", "author": 12, "parent": "risk-b", "content": "Synthetic corrective context questioning this high-risk claim."},
+      {"logical_id": "risk_a_repost", "kind": "repost", "author": 42, "parent": "risk-a"}
+    ],
+    "initial_action_history": []
+  },
+  "exposure": {
+    "strategies": ["no_intervention", "static_cosref", "theory_informed_cosref"],
+    "static_cosref": {"oasis_keep_intra": 0.6, "oasis_keep_inter": 0.6},
+    "theory_candidates": [[0.2, 1.0], [0.4, 0.8], [0.6, 0.6], [0.8, 0.4], [1.0, 0.2]],
+    "theory_selected_by_direction": {"intra": [0.2, 1.0], "balanced": [0.6, 0.6], "inter": [1.0, 0.2]},
+    "project_l1_budget": 0.8,
+    "direction_tolerance": 0.05,
+    "minimum_strict_gap": 0.2
+  },
+  "threshold_shadow": {
+    "enabled": true,
+    "threshold": 0.1,
+    "paper_omega_intra": 1.0,
+    "paper_omega_inter": 1.0,
+    "provenance": "counterfactual_shadow_diagnostic_project_adaptation"
+  },
+  "llm": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "max_concurrency": 1,
+    "request_interval_seconds": 12.0,
+    "timeout_seconds": 60.0,
+    "max_logical_decisions_per_unit": 10,
+    "max_physical_requests_per_unit": 20,
+    "max_physical_requests_total": 180,
+    "structured_correction_retries_per_decision": 1
+  },
+  "fake_backend": {
+    "failure_mode": "once_semantic_mismatch",
+    "provenance": "deterministic_semantic_consistency_fake_backend_engineering_only"
+  },
+  "semantic_micro_pilot": {
+    "logical_decisions": 12,
+    "maximum_physical_requests": 24,
+    "coverage": {
+      "action_types": ["ignore", "report", "repost", "quote"],
+      "post_relationships": ["direct", "quote", "repost", "canonical_root"],
+      "network_conditions": ["strong-community", "moderate-mixing", "weak-community"],
+      "minimum_behavior_profiles": 4,
+      "legal_action_cardinality": ["moderate", "large"]
+    },
+    "selections": [
+      {"condition_id": "strong-community", "strategy": "no_intervention", "timestep": 1, "user_id": 0},
+      {"condition_id": "strong-community", "strategy": "no_intervention", "timestep": 1, "user_id": 1},
+      {"condition_id": "strong-community", "strategy": "static_cosref", "timestep": 1, "user_id": 2},
+      {"condition_id": "strong-community", "strategy": "static_cosref", "timestep": 1, "user_id": 30},
+      {"condition_id": "strong-community", "strategy": "theory_informed_cosref", "timestep": 2, "user_id": 31},
+      {"condition_id": "moderate-mixing", "strategy": "no_intervention", "timestep": 1, "user_id": 0},
+      {"condition_id": "moderate-mixing", "strategy": "static_cosref", "timestep": 1, "user_id": 1},
+      {"condition_id": "moderate-mixing", "strategy": "theory_informed_cosref", "timestep": 2, "user_id": 2},
+      {"condition_id": "moderate-mixing", "strategy": "theory_informed_cosref", "timestep": 2, "user_id": 30},
+      {"condition_id": "weak-community", "strategy": "no_intervention", "timestep": 1, "user_id": 31},
+      {"condition_id": "weak-community", "strategy": "static_cosref", "timestep": 1, "user_id": 0},
+      {"condition_id": "weak-community", "strategy": "theory_informed_cosref", "timestep": 2, "user_id": 2}
+    ]
+  }
+}

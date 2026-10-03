@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "project_budget": 0.8,
+  "mu_transition_tolerance": 0.05,
+  "omega_grid": [
+    [0.2, 1.0],
+    [0.4, 0.8],
+    [0.6, 0.6],
+    [0.8, 0.4],
+    [1.0, 0.2]
+  ],
+  "calibration_seeds": [31901],
+  "evaluation_seeds": [31911, 31912, 31913],
+  "conditions": [
+    {
+      "id": "strong-community",
+      "p_intra": 0.16,
+      "p_inter": 0.015
+    },
+    {
+      "id": "weak-community",
+      "p_intra": 0.03,
+      "p_inter": 0.12
+    }
+  ],
+  "simulation": {
+    "nodes": 60,
+    "timesteps": 3,
+    "active_users_per_step": 12,
+    "recommendation_count": 4,
+    "following_count": 2,
+    "recommendation_buffer": 10,
+    "controller_window": 2,
+    "risk_score": 0.9
+  },
+  "global_keep_probability": 0.6,
+  "static_omega_intra": 0.6,
+  "static_omega_inter": 0.6,
+  "dynamic_controller": {
+    "interval": 1,
+    "step_size": 0.2,
+    "risk_target": 0.25,
+    "cross_community_target": 0.3,
+    "report_target": 0.1,
+    "benign_loss_limit": 0.1
+  }
+}

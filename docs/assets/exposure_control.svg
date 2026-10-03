@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Community-aware exposure control</title>
+  <desc id="desc">Diagram of within- and between-community candidate exposure, project keep probabilities, and shown or suppressed outcomes.</desc>
+  <defs>
+    <marker id="arr2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0 0 L0 6 L9 3z" fill="#475569"/></marker>
+    <style>.title{font:700 28px system-ui,sans-serif;fill:#0f172a}.h{font:700 17px system-ui,sans-serif;fill:#0f172a}.t{font:400 13px system-ui,sans-serif;fill:#334155}.small{font:400 12px system-ui,sans-serif;fill:#475569}.line{stroke:#475569;stroke-width:2;fill:none;marker-end:url(#arr2)}</style>
+  </defs>
+  <rect width="1200" height="700" fill="#f8fafc"/>
+  <text x="52" y="50" class="title">COSREF direction → calibrated OASIS exposure gate</text>
+  <text x="52" y="78" class="small">The blue theory box supplies a priority direction. The orange mapping and every keep probability are project adaptations.</text>
+
+  <rect x="50" y="115" width="285" height="145" rx="18" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="72" y="146" class="h">Paper theory</text>
+  <text x="72" y="176" class="t">measured community mixing μ</text>
+  <text x="72" y="199" class="t">paper ω influences threshold adoption</text>
+  <text x="72" y="222" class="t">supports intra / balanced / inter priority</text>
+  <text x="72" y="245" class="small">does not specify OASIS keep probability</text>
+
+  <rect x="385" y="115" width="345" height="145" rx="18" fill="#ffedd5" stroke="#ea580c" stroke-width="2"/>
+  <text x="407" y="146" class="h">Project calibration</text>
+  <text x="407" y="176" class="t">scan candidate (keep_intra, keep_inter)</text>
+  <text x="407" y="199" class="t">respect L1 budget + observe realized cost</text>
+  <text x="407" y="222" class="t">select direction per actual network μ</text>
+  <text x="407" y="245" class="small">provenance: project_adaptation</text>
+
+  <rect x="780" y="115" width="370" height="145" rx="18" fill="#fff7ed" stroke="#f97316" stroke-width="2"/>
+  <text x="802" y="146" class="h">Exposure gate</text>
+  <text x="802" y="178" class="t">keep = 1 − risk × (1 − channel_keep)</text>
+  <text x="802" y="202" class="t">channel = intra if communities match</text>
+  <text x="802" y="226" class="t">otherwise channel = inter</text>
+  <text x="802" y="248" class="small">applied to recommended and followed posts</text>
+
+  <path d="M335 188 H385" class="line"/><path d="M730 188 H780" class="line"/>
+
+  <rect x="50" y="320" width="480" height="270" rx="24" fill="#eff6ff" stroke="#60a5fa" stroke-width="2"/>
+  <text x="75" y="354" class="h">Community A</text>
+  <circle cx="140" cy="430" r="28" fill="#2563eb"/><text x="130" y="436" font-family="system-ui" font-size="14" fill="white">u</text>
+  <circle cx="310" cy="402" r="23" fill="#60a5fa"/><text x="300" y="408" font-family="system-ui" font-size="13" fill="white">p₁</text>
+  <circle cx="385" cy="500" r="23" fill="#60a5fa"/><text x="375" y="506" font-family="system-ui" font-size="13" fill="white">p₂</text>
+  <path d="M168 425 C220 400 255 400 287 402" stroke="#16a34a" stroke-width="6" fill="none"/>
+  <path d="M165 446 C245 485 310 500 362 500" stroke="#dc2626" stroke-width="4" stroke-dasharray="10 7" fill="none"/>
+  <text x="84" y="555" class="t">same-community candidates use keep_intra</text>
+
+  <rect x="670" y="320" width="480" height="270" rx="24" fill="#f5f3ff" stroke="#a78bfa" stroke-width="2"/>
+  <text x="695" y="354" class="h">Community B</text>
+  <circle cx="755" cy="430" r="23" fill="#8b5cf6"/><text x="745" y="436" font-family="system-ui" font-size="13" fill="white">p₃</text>
+  <circle cx="950" cy="470" r="23" fill="#8b5cf6"/><text x="940" y="476" font-family="system-ui" font-size="13" fill="white">p₄</text>
+  <path d="M168 430 C340 295 600 320 733 418" stroke="#16a34a" stroke-width="6" fill="none"/>
+  <path d="M168 440 C400 600 720 570 928 480" stroke="#dc2626" stroke-width="4" stroke-dasharray="10 7" fill="none"/>
+  <text x="704" y="555" class="t">cross-community candidates use keep_inter</text>
+
+  <rect x="430" y="615" width="340" height="52" rx="12" fill="#fff" stroke="#cbd5e1"/>
+  <line x1="455" y1="636" x2="505" y2="636" stroke="#16a34a" stroke-width="6"/><text x="520" y="641" class="t">shown</text>
+  <line x1="610" y1="636" x2="660" y2="636" stroke="#dc2626" stroke-width="4" stroke-dasharray="10 7"/><text x="675" y="641" class="t">suppressed</text>
+</svg>

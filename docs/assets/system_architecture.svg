@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">Adaptive DiffusionGuard system architecture</title>
+  <desc id="desc">Architecture separating paper theory, project adaptation, OASIS platform state, LLM behavior, threshold shadow diagnostics, and audit outputs.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#475569"/></marker>
+    <style>
+      .title{font:700 28px system-ui,sans-serif;fill:#0f172a}.sub{font:400 14px system-ui,sans-serif;fill:#475569}
+      .h{font:700 17px system-ui,sans-serif;fill:#0f172a}.t{font:400 13px system-ui,sans-serif;fill:#334155}
+      .tag{font:700 12px system-ui,sans-serif;letter-spacing:.5px}.line{stroke:#475569;stroke-width:2;fill:none;marker-end:url(#arrow)}
+      .dash{stroke:#64748b;stroke-width:2;stroke-dasharray:8 6;fill:none;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect width="1200" height="720" fill="#f8fafc"/>
+  <text x="54" y="52" class="title">Adaptive DiffusionGuard · separation of responsibilities</text>
+  <text x="54" y="79" class="sub">Exposure governance changes the Feed; only the LLM selects an OASIS action. Threshold response remains a non-mutating diagnostic.</text>
+
+  <rect x="55" y="120" width="250" height="150" rx="18" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="78" y="148" class="tag" fill="#1d4ed8">PAPER THEORY</text>
+  <text x="78" y="181" class="h">COSREF / NC model</text>
+  <text x="78" y="208" class="t">mixing μ · paper ω</text>
+  <text x="78" y="230" class="t">threshold inequality · cost</text>
+  <text x="78" y="252" class="t">directional prior only</text>
+
+  <rect x="360" y="120" width="300" height="150" rx="18" fill="#ffedd5" stroke="#ea580c" stroke-width="2"/>
+  <text x="383" y="148" class="tag" fill="#c2410c">PROJECT ADAPTATION</text>
+  <text x="383" y="181" class="h">Mixing + calibration</text>
+  <text x="383" y="208" class="t">directed follower graph adaptation</text>
+  <text x="383" y="230" class="t">candidate OASIS keep probabilities</text>
+  <text x="383" y="252" class="t">budget and realized-cost audit</text>
+
+  <rect x="715" y="120" width="430" height="150" rx="18" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="738" y="148" class="tag" fill="#15803d">OASIS PLATFORM</text>
+  <text x="738" y="181" class="h">AdaptiveDiffusionPlatform</text>
+  <text x="738" y="208" class="t">recommendation + followed candidates</text>
+  <text x="738" y="230" class="t">root resolution → exposure gate → frozen Feed</text>
+  <text x="738" y="252" class="t">impression log + SQLite state</text>
+
+  <path d="M305 195 H360" class="line"/>
+  <path d="M660 195 H715" class="line"/>
+
+  <rect x="135" y="345" width="360" height="175" rx="18" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+  <text x="158" y="374" class="tag" fill="#6d28d9">LLM BEHAVIOR</text>
+  <text x="158" y="407" class="h">Groq-hosted gpt-oss-20b</text>
+  <text x="158" y="434" class="t">profile + frozen Feed + legal ordered actions</text>
+  <text x="158" y="456" class="t">fixed semantic response (v2.1)</text>
+  <text x="158" y="478" class="t">local consistency check + deterministic dispatch</text>
+  <text x="158" y="500" class="t">no fine-tuning · no oracle risk label in prompt</text>
+
+  <rect x="545" y="345" width="300" height="175" rx="18" fill="#f1f5f9" stroke="#64748b" stroke-width="2"/>
+  <text x="568" y="374" class="tag" fill="#475569">COUNTERFACTUAL SHADOW</text>
+  <text x="568" y="407" class="h">Threshold response</text>
+  <text x="568" y="434" class="t">synchronous, irreversible adoption</text>
+  <text x="568" y="456" class="t">observable adopted-neighbor pressure</text>
+  <text x="568" y="478" class="t">writes no Feed, prompt, repost or trace</text>
+
+  <rect x="895" y="345" width="250" height="175" rx="18" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+  <text x="918" y="374" class="tag" fill="#b45309">AUDIT OUTPUT</text>
+  <text x="918" y="407" class="h">Evidence boundary</text>
+  <text x="918" y="434" class="t">DecisionSnapshot ↔ trace</text>
+  <text x="918" y="456" class="t">exposure · action · cascade</text>
+  <text x="918" y="478" class="t">cost · failures · token usage</text>
+  <text x="918" y="500" class="t">no automatic training export</text>
+
+  <path d="M930 270 V310 H315 V345" class="line"/>
+  <path d="M930 270 V310 H695 V345" class="dash"/>
+  <path d="M495 432 H545" class="dash"/>
+  <path d="M845 432 H895" class="dash"/>
+  <path d="M495 486 H870 V470 H895" class="line"/>
+
+  <rect x="55" y="585" width="1090" height="82" rx="14" fill="#ffffff" stroke="#cbd5e1"/>
+  <circle cx="85" cy="614" r="7" fill="#2563eb"/><text x="102" y="619" class="t">Paper-derived statement</text>
+  <circle cx="285" cy="614" r="7" fill="#ea580c"/><text x="302" y="619" class="t">Project adaptation</text>
+  <circle cx="478" cy="614" r="7" fill="#7c3aed"/><text x="495" y="619" class="t">LLM behavior</text>
+  <circle cx="638" cy="614" r="7" fill="#64748b"/><text x="655" y="619" class="t">Synthetic shadow</text>
+  <text x="78" y="647" class="sub">Solid arrows change runtime state. Dashed arrows are diagnostic only. paper ω ≠ OASIS keep probability.</text>
+</svg>

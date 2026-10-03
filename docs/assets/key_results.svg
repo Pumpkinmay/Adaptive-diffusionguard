@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">Key engineering and synthetic threshold results</title>
+  <desc id="desc">Two panels showing real Groq protocol completion and synthetic threshold cascade comparison without treating them as comparable efficacy measurements.</desc>
+  <style>.title{font:700 28px system-ui,sans-serif;fill:#0f172a}.h{font:700 18px system-ui,sans-serif;fill:#0f172a}.t{font:400 13px system-ui,sans-serif;fill:#334155}.small{font:400 12px system-ui,sans-serif;fill:#64748b}.axis{stroke:#94a3b8;stroke-width:1}.grid{stroke:#e2e8f0;stroke-width:1}.v{font:700 14px system-ui,sans-serif;fill:#0f172a}</style>
+  <rect width="1200" height="720" fill="#f8fafc"/>
+  <text x="50" y="48" class="title">Key results · different evidence types, shown separately</text>
+
+  <rect x="45" y="85" width="530" height="505" rx="18" fill="#fff" stroke="#cbd5e1"/>
+  <text x="70" y="120" class="h">A. Real Groq protocol engineering completion</text>
+  <text x="70" y="143" class="small">Different sample sizes; descriptive reliability only</text>
+  <line x1="130" y1="510" x2="535" y2="510" class="axis"/>
+  <line x1="130" y1="210" x2="130" y2="510" class="axis"/>
+  <line x1="130" y1="435" x2="535" y2="435" class="grid"/><text x="84" y="440" class="small">25%</text>
+  <line x1="130" y1="360" x2="535" y2="360" class="grid"/><text x="84" y="365" class="small">50%</text>
+  <line x1="130" y1="285" x2="535" y2="285" class="grid"/><text x="84" y="290" class="small">75%</text>
+  <line x1="130" y1="210" x2="535" y2="210" class="grid"/><text x="78" y="215" class="small">100%</text>
+  <rect x="170" y="250" width="80" height="260" rx="8" fill="#64748b"/>
+  <rect x="310" y="210" width="80" height="300" rx="8" fill="#7c3aed"/>
+  <rect x="450" y="235" width="80" height="275" rx="8" fill="#f59e0b"/>
+  <text x="181" y="240" class="v">78/90</text><text x="319" y="200" class="v">20/20</text><text x="459" y="225" class="v">11/12</text>
+  <text x="181" y="536" class="t">v1</text><text x="321" y="536" class="t">v2</text><text x="456" y="536" class="t">v2.1</text>
+  <text x="70" y="570" class="small">v2 completed, but offline audit found one index/rationale target mismatch.</text>
+
+  <rect x="625" y="85" width="530" height="505" rx="18" fill="#fff" stroke="#cbd5e1"/>
+  <text x="650" y="120" class="h">B. Synthetic threshold-response cascade</text>
+  <text x="650" y="143" class="small">Mean cascade size over 10 paired seeds; not real governance efficacy</text>
+  <line x1="705" y1="510" x2="1115" y2="510" class="axis"/>
+  <line x1="705" y1="210" x2="705" y2="510" class="axis"/>
+  <line x1="705" y1="410" x2="1115" y2="410" class="grid"/><text x="670" y="415" class="small">20</text>
+  <line x1="705" y1="310" x2="1115" y2="310" class="grid"/><text x="670" y="315" class="small">40</text>
+  <line x1="705" y1="210" x2="1115" y2="210" class="grid"/><text x="670" y="215" class="small">60</text>
+  <rect x="745" y="210" width="42" height="300" rx="5" fill="#94a3b8"/><rect x="790" y="214" width="42" height="296" rx="5" fill="#ea580c"/>
+  <rect x="875" y="210" width="42" height="300" rx="5" fill="#94a3b8"/><rect x="920" y="210" width="42" height="300" rx="5" fill="#ea580c"/>
+  <rect x="1005" y="210" width="42" height="300" rx="5" fill="#94a3b8"/><rect x="1050" y="216" width="42" height="294" rx="5" fill="#ea580c"/>
+  <text x="744" y="198" class="small">60.0</text><text x="789" y="202" class="small">59.3</text>
+  <text x="874" y="198" class="small">60.0</text><text x="919" y="198" class="small">60.0</text>
+  <text x="1004" y="198" class="small">60.0</text><text x="1048" y="204" class="small">58.8</text>
+  <text x="748" y="537" class="t">strong</text><text x="875" y="537" class="t">moderate</text><text x="1009" y="537" class="t">weak</text>
+  <rect x="770" y="558" width="18" height="12" fill="#94a3b8"/><text x="796" y="569" class="small">static COSREF</text>
+  <rect x="930" y="558" width="18" height="12" fill="#ea580c"/><text x="956" y="569" class="small">theory-informed</text>
+
+  <rect x="45" y="620" width="1110" height="64" rx="12" fill="#fff7ed" stroke="#fdba74"/>
+  <text x="68" y="647" class="t">Interpretation boundary: panel A measures protocol completion, not action quality. Panel B uses oracle synthetic risk labels and a deterministic threshold model.</text>
+  <text x="68" y="670" class="small">Neither panel demonstrates real human behavior, causal governance effectiveness, or a general advantage of COSREF.</text>
+</svg>

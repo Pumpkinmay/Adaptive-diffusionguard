@@ -1,0 +1,52 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "adaptive-diffusionguard"
+version = "0.1.0"
+description = "Exposure-governance experiments built as an extension of OASIS"
+readme = "README.md"
+requires-python = ">=3.10,<3.12"
+license = { text = "Apache-2.0" }
+dependencies = [
+  "camel-oasis @ git+https://github.com/camel-ai/oasis.git@ca8caa52aeec21e0db30926797e765ad07e75015",
+  "python-dotenv>=1.0",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8.2", "pytest-asyncio>=0.23", "ruff>=0.6"]
+training = [
+  "accelerate>=0.30",
+  "datasets>=2.19",
+  "peft>=0.11",
+  "torch>=2.2",
+  "transformers>=4.41",
+]
+qlora = ["bitsandbytes>=0.43; platform_system == 'Linux'"]
+
+[project.scripts]
+diffusionguard-sim = "adaptive_diffusionguard.experiments.run:main"
+diffusionguard-build-dataset = "training.build_dataset:main"
+diffusionguard-train-lora = "training.train_lora:main"
+diffusionguard-evaluate-actions = "training.evaluate_actions:main"
+diffusionguard-real-llm = "adaptive_diffusionguard.experiments.real_llm_validation:main"
+diffusionguard-teacher-eval = "adaptive_diffusionguard.evaluation.teacher_eval:main"
+diffusionguard-cosref-llm-joint = "adaptive_diffusionguard.experiments.cosref_llm_joint:main"
+diffusionguard-cosref-llm-joint-v2 = "adaptive_diffusionguard.experiments.cosref_llm_joint_v2:main"
+diffusionguard-cosref-llm-joint-v2-1 = "adaptive_diffusionguard.experiments.cosref_llm_joint_v2_1:main"
+
+[tool.pytest.ini_options]
+addopts = "-q"
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["adaptive_diffusionguard", "training"]

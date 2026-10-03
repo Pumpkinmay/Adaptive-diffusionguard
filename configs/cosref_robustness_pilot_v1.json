@@ -1,0 +1,111 @@
+{
+  "experiment_id": "cosref-robustness-pilot-v1",
+  "version": 1,
+  "preregistered_at": "2026-09-29",
+  "provenance": "project_adaptation",
+  "paper_omega_equals_keep_probability": false,
+  "project_budget": 0.8,
+  "mu_transition_tolerance": 0.05,
+  "maximum_runtime_seconds": 5400,
+  "preflight_seed": 41999,
+  "calibration_seeds": [42001, 42002, 42003, 42004, 42005],
+  "evaluation_seeds": [42101, 42102, 42103, 42104, 42105, 42106, 42107, 42108, 42109, 42110],
+  "baselines": [
+    "no_intervention",
+    "global_throttle",
+    "static_cosref",
+    "dynamic_cosref",
+    "theory_informed_cosref"
+  ],
+  "conditions": [
+    {
+      "id": "strong-community",
+      "target": "mu < 0.2",
+      "mu_min_inclusive": 0.0,
+      "mu_max_exclusive": 0.2,
+      "p_intra": 0.16,
+      "p_inter": 0.015
+    },
+    {
+      "id": "moderate-mixing",
+      "target": "0.4 <= mu <= 0.6",
+      "mu_min_inclusive": 0.4,
+      "mu_max_inclusive": 0.6,
+      "p_intra": 0.09,
+      "p_inter": 0.09
+    },
+    {
+      "id": "weak-community",
+      "target": "mu > 0.8",
+      "mu_min_exclusive": 0.8,
+      "mu_max_inclusive": 1.0,
+      "p_intra": 0.015,
+      "p_inter": 0.16
+    }
+  ],
+  "omega_grid": [
+    [0.2, 1.0],
+    [0.4, 0.8],
+    [0.6, 0.6],
+    [0.8, 0.4],
+    [1.0, 0.2]
+  ],
+  "calibration_selection": {
+    "direction_constraint": true,
+    "objective_order": [
+      "high_risk_exposures",
+      "successful_risk_reposts",
+      "community_coverage",
+      "benign_exposure_loss",
+      "realized_intervention_cost",
+      "omega_intra",
+      "omega_inter"
+    ],
+    "leave_one_seed_out": true,
+    "bootstrap_resamples": 2000,
+    "bootstrap_seed": 20260929,
+    "direction_stability_threshold": 0.8,
+    "exact_omega_stability_threshold": 0.8
+  },
+  "statistics": {
+    "confidence_level": 0.95,
+    "bootstrap_resamples": 2000,
+    "bootstrap_seed": 20260930,
+    "difference_orientation": "theory_informed_minus_comparator"
+  },
+  "primary_metrics": [
+    "risk_cascade_size",
+    "successful_risk_reposts"
+  ],
+  "secondary_metrics": [
+    "high_risk_exposures",
+    "intra_high_risk_exposures",
+    "inter_high_risk_exposures",
+    "community_coverage",
+    "benign_exposure_loss",
+    "nominal_project_cost_initial",
+    "realized_intervention_cost",
+    "suppressed_impressions"
+  ],
+  "simulation": {
+    "nodes": 60,
+    "timesteps": 8,
+    "active_users_per_step": 12,
+    "recommendation_count": 4,
+    "following_count": 2,
+    "recommendation_buffer": 10,
+    "controller_window": 2,
+    "risk_score": 0.9
+  },
+  "global_keep_probability": 0.6,
+  "static_omega_intra": 0.6,
+  "static_omega_inter": 0.6,
+  "dynamic_controller": {
+    "interval": 1,
+    "step_size": 0.2,
+    "risk_target": 0.25,
+    "cross_community_target": 0.3,
+    "report_target": 0.1,
+    "benign_loss_limit": 0.1
+  }
+}
