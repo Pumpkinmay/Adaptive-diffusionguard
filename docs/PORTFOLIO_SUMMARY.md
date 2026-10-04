@@ -76,6 +76,11 @@ threshold-response预注册实验的paper-native方向对照通过。60节点、
 | v2 fixed index | 20 | 20/20 | 发现1条数字索引与rationale目标错绑 |
 | v2.1 semantic redundancy | 12 | 11/12 | 11条成功响应字段一致；1个最终HTTP 400 `json_validate_failed` |
 
+另一个独立的 real-llm 入口使用动态 `choice_id` 枚举协议，最近一次真实端到端运行完成
+15/15；首次成功14/15（93.33%），一次 provider `json_validate_failed` 经结构化纠正
+成功恢复。它与v2.1冗余语义协议的11/12验证用途和协议不同，不能合并为同一成功率，
+也不表示协议问题已最终解决或治理有效。
+
 v2.1共19/24次物理请求，首次成功10/12；choice/action/target本地错绑为0，dispatcher
 失败为0。结果是`degraded`，因此协议链路被冻结，而不是宣称最终解决。
 

@@ -1,7 +1,7 @@
 # GitHub release candidate checklist
 
-Checked locally on 2026-10-03. No Git staging, commit, push, remote API call,
-LLM call, model download or experiment rerun was performed.
+Release checks were completed on 2026-10-03. No LLM call, model download or
+experiment rerun was performed as part of those checks.
 
 ## Candidate status
 
@@ -54,25 +54,18 @@ The checked `.gitignore` covers these paths. Both `.venv` and the local stale
 environment directory are ignored. `runs/` remains the authoritative local
 record but is deliberately outside the release candidate.
 
+The root-level residual files `testtorch.py`, `pyproject.toml.orig`, and
+`.DS_Store` were identified as local leftovers and are not release candidates.
+They were untracked and had no documentation references; the cleanup task
+removed them without changing the tracked `pyproject.toml`.
+
 ## Current read-only Git status
 
-The repository has no commit yet, so every candidate file is currently
-untracked (`??`); there are no tracked modifications or staged files. After
-adding this checklist, the grouped untracked snapshot is:
-
-| Path group | Untracked candidate files |
-|---|---:|
-| root | 7 |
-| `adaptive_diffusionguard/` | 39 |
-| `configs/` | 8 |
-| `docs/` | 21 |
-| `scripts/` | 12 |
-| `tests/` | 21 |
-| `training/` | 9 |
-| **Total** | **117** |
-
-Run `git status --short --untracked-files=all` for the exact filename list.
-This grouped form is the recommended whitelist; ignored paths are not included.
+The repository has an initial commit dated 2026-10-03 20:49 (+08:00):
+`feat: add adaptive diffusionguard research prototype`. Immediately before
+this documentation-and-cleanup task, `git status --short` showed only
+`uv.lock` as modified; it was a pre-existing change and is outside this task's
+allowed edit scope. There were no staged files.
 
 ## License and provenance
 

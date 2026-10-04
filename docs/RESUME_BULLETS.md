@@ -22,6 +22,9 @@ engineering limits with deterministic backends and small Groq pilots.
   impression审计和共享预算控制，未修改上游源码。
 - 构建带缓存隔离、调用预算、脱敏、严格schema、DecisionSnapshot和确定性dispatcher的
   LLM动作链路；90决策Fake验证完成90/90，并保留真实v2.1 pilot的11/12结果。
+- real-llm入口采用动态`choice_id`枚举协议，最近一次真实端到端运行完成15/15（首次
+  成功14/15，即93.33%，1次结构化纠正成功）；该验证不同于采用冗余语义字段的v2.1
+  协议及其11/12结果。
 - 将COSREF论文中的社区混合与调控方向转化为显式project adaptation，并用固定种子
   曝光扫描和同步阈值传播实验评估曝光、repost、cascade与成本权衡。
 
@@ -34,6 +37,10 @@ engineering limits with deterministic backends and small Groq pilots.
   redaction, strict local validation, DecisionSnapshots, and deterministic
   dispatch; completed a 90/90 fake validation and preserved an 11/12 real v2.1
   pilot result.
+- The dynamic-`choice_id` real-LLM entry point completed its latest end-to-end
+  run at 15/15 (14/15 first-attempt success, 93.33%, with one successful
+  structured correction); this is distinct from the redundant-semantic v2.1
+  protocol and its 11/12 result.
 - Bridged COSREF community-mixing theory into an explicitly labeled project
   adaptation and evaluated exposure, repost, cascade, and cost trade-offs with
   fixed-seed calibration and synchronous threshold simulations.

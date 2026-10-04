@@ -83,6 +83,21 @@ realized-cost 匹配超出 5%目标、使用 oracle 合成风险标签，因而�
 - rationale 尚未被批准为训练标签；项目没有完成 LoRA/QLoRA 训练，也不应依据这些
   pilot 结果启动训练。
 
+## 各入口结果对照
+
+- `diffusionguard-real-llm` 使用动态 `choice_id` 枚举协议。最近一次 real-llm 运行完成
+  15/15 个决策，状态为 `success`、退出码 0；首次成功 14/15（93.33%），一次
+  provider `json_validate_failed` 经一次结构化纠正重试成功恢复，共产生 16 次物理
+  远程请求。
+- `cosref-llm-joint-v2.1` 使用 `fixed-choice-semantic-v2.1` 冗余语义协议。真实
+  micro-pilot 完成 11/12，状态为 `degraded`、退出码 2，共产生 19 次物理远程请求；
+  11 条成功响应的 choice/action/target 语义字段一致，另有 1 个最终 provider 失败。
+- 100 决策评估框架的 Groq 运行只执行了 `batch-01`，该批次 20/20 完成，状态为
+  `success`。其动作质量评分来自 synthetic rule-based rubric，不是人类行为金标准。
+
+三个入口的协议、实验目的和规模不同，结果互相不可替代。协议开发仍按预注册停止
+规则冻结在 v2.1；本对照仅澄清入口差异，不改变任何既有工程、行为或治理结论。
+
 ## 冻结状态
 
 - LLM 协议冻结在 `fixed-choice-semantic-v2.1`，最终真实结果为 11/12、degraded。
