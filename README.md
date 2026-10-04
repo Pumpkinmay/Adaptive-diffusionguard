@@ -394,6 +394,7 @@ of the full paper. Project keep values are labelled `project_adaptation`.
 | Joint LLM v1 | 90 real decisions | 78/90, degraded |
 | Joint LLM v2 | 20 real decisions | 20/20, but one index/rationale target mismatch was found offline |
 | Joint LLM v2.1 | 12 real decisions | 11/12, degraded; one final provider schema-validation error |
+| real-llm entry (dynamic `choice_id`) | 15 real decisions | 15/15, success; 14/15 first-attempt, one structured correction recovered |
 
 These stages do not establish a ranking of governance policies. See
 [`docs/PROJECT_FINAL_STATUS.md`](docs/PROJECT_FINAL_STATUS.md),
