@@ -4,13 +4,11 @@ First runnable research scaffold for exposure-level diffusion governance on
 top of [OASIS](https://github.com/camel-ai/oasis). It is a separate project;
 the OASIS source tree is not patched.
 
-本项目研究在保持模型、合成 Agent profile 和动作接口不变时，网络层社区内外曝光
-策略如何改变 Agent 看到的内容、合法动作和后续合成传播。它是可复现研究原型，不是
-生产系统，也不把 LLM Agent 当作真实人类。
+## 中文简介
 
-**冻结状态：** 最后一次 `fixed-choice-semantic-v2.1` 真实 Groq micro-pilot 完成
-**11/12** 个决策；未完成决策为 provider `json_validate_failed`，不是 dispatcher
-失败。项目不再开发 v2.2、不重跑或扩大真实实验，也没有进行 LoRA/QLoRA 微调。
+这个仓库研究网络层的"曝光治理"：模型、合成 Agent profile 和动作接口都不动，只调社区内外的曝光策略，看 Agent 看到什么、能做什么合法动作、后续传播怎么变。定位是可复现的研究原型，不是生产系统；LLM Agent 的输出也不代表真实人类行为。
+
+冻结状态：最后一次真实验证（`fixed-choice-semantic-v2.1`，Groq micro-pilot）完成 11/12 个决策，未完成的那 1 个是 provider 侧的 `json_validate_failed`，不是 dispatcher 失败。按预注册规则冻结：不开发 v2.2，不重跑、不扩大真实实验，也没有做 LoRA/QLoRA 微调。
 
 ![Adaptive DiffusionGuard system architecture](docs/assets/system_architecture.svg)
 
@@ -348,6 +346,30 @@ point: `(1 - omega_intra) + (1 - omega_inter)`. Initial static/global settings
 and subsequent dynamic changes draw from the same configured budget. The
 upstream `rec` table contains no base scores, so this project logs a documented
 rank/like proxy rather than inventing an OASIS model score.
+
+## Authorship and citation
+
+This repository is an independent engineering adaptation of the community
+structure-regulation coupling model, maintained by **Meiling Xie**, a
+**co-first author** of the paper:
+
+> Xiaojie Chen, Meiling Xie, Jun Meng, Sheng Fang, Xiaosong Chen, Jürgen
+> Kurths, Jan Nagler, Jingfang Fan. "Community structure-regulation coupling
+> reveals optimal information diffusion." *Nature Communications* 17, 4879
+> (2026). https://doi.org/10.1038/s41467-026-73665-1
+
+```bibtex
+@article{chen2026community,
+  title={Community structure-regulation coupling reveals optimal information diffusion},
+  author={Chen, Xiaojie and Xie, Meiling and Meng, Jun and Fang, Sheng and
+          Chen, Xiaosong and Kurths, J{\"u}rgen and Nagler, Jan and Fan, Jingfang},
+  journal={Nature Communications},
+  volume={17},
+  pages={4879},
+  year={2026},
+  doi={10.1038/s41467-026-73665-1}
+}
+```
 
 ## COSREF theory bridge and observed stages
 
