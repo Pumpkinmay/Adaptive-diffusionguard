@@ -318,7 +318,10 @@ class AdaptiveDiffusionPlatform(Platform):
                         f"(candidate {candidate.post_id})"
                     )
                 decision = self.policy.decide(
-                    user_community, author_community, risk
+                    user_community,
+                    author_community,
+                    risk,
+                    decision_key=hash((timestep, user_id, root_id)),
                 )
                 records.append(
                     ImpressionRecord(
@@ -346,7 +349,7 @@ class AdaptiveDiffusionPlatform(Platform):
         self.impressions.append_many(records)
         if not shown_ids:
             result: dict[str, Any] = {
-                "success": False,
+                "success": True,
                 "message": "No posts passed exposure policy.",
                 "posts": [],
             }

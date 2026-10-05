@@ -34,7 +34,7 @@ class StaticCOSREFPolicy:
     ) -> None:
         self.omega_intra = _unit_interval("omega_intra", omega_intra)
         self.omega_inter = _unit_interval("omega_inter", omega_inter)
-        self._rng = random.Random(seed)
+        self._seed = int(seed)
 
     def update(self, omega_intra: float, omega_inter: float) -> None:
         self.omega_intra = _unit_interval("omega_intra", omega_intra)
@@ -59,11 +59,13 @@ class StaticCOSREFPolicy:
         user_community: str,
         author_community: str,
         risk_score: float,
+        decision_key: int,
     ) -> PolicyDecision:
         probability = self.keep_probability(
             user_community, author_community, risk_score
         )
-        return PolicyDecision(probability, self._rng.random() < probability)
+        draw = random.Random(hash((self._seed, decision_key))).random()
+        return PolicyDecision(probability, draw < probability)
 
 
 class NoInterventionPolicy(StaticCOSREFPolicy):

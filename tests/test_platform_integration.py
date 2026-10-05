@@ -47,7 +47,8 @@ async def test_refresh_controls_recommendations_and_following_and_tracks_root(
     platform.post_risk_scores[1] = 1.0
 
     result = await platform.refresh(0)
-    assert result["success"] is False
+    assert result["success"] is True
+    assert result["posts"] == []
     rows = platform.db.execute(
         "SELECT post_id, root_post_id, author_community, source, shown "
         "FROM diffusionguard_impression ORDER BY source"
